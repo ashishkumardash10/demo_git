@@ -1,0 +1,139 @@
+						OPERATOR
+						========
+1- What is operator ?
+ans - In MySQL, operators are symbols or keywords used to perform operations on data. They are commonly used in SELECT, WHERE, UPDATE, DELETE, and other SQL statements.
+
+- There are 7 main types of operators in MySQL.
+
+No.	Operator Type	Purpose
+1	Arithmetic Operators	Perform mathematical calculations.
+2	Comparison (Relational) Operators	Compare two values.
+3	Logical Operators	Combine multiple conditions.
+4	Special Operators	Perform special comparisons and searches.
+6	Assignment Operator	Assign a value to a user-defined variable.
+
+
+
+
+
+Arithmetic Operator
+-------------------
+
+- Arithmetic operators are used to perform mathematical calculations on numeric values.
+	ex - + ,-,*,/,%
+
+	-" + "
+		SELECT salary + 5000 AS new_salary
+		FROM Employee;
+
+	-"-"     SELECT salary - 2000 AS salary_after_deduction
+		FROM Employee;
+	
+	-"*"     SELECT salary * 12 AS annual_salary
+		FROM Employee;
+
+	-"/"    SELECT *FROM Employee
+		WHERE salary / 12 > 3000;
+
+	-"%"	SELECT salary % 1000 AS remainder
+		FROM Employee;
+
+
+
+What are Relational Operators?
+
+- Relational operators are used to compare two values. The result of the comparison is either TRUE or FALSE.	
+		
+		<,>,<=,>=,!= or <> ,=
+	
+	1. Equal To (=)
+	Find employees whose salary is 30000.
+	SELECT *FROM Employee
+	WHERE salary = 30000;
+
+
+
+	2. Not Equal To (!=)
+	Find employees whose salary is not 30000.
+	SELECT *FROM Employee
+	WHERE salary != 30000;
+
+
+	3. Not Equal To (<>)
+	Find The Employee Which Salary Is Not Equals To 3000
+	SELECT *FROM Employee
+	WHERE salary <> 30000;
+
+	4. Greater Than (>)
+	Find employees with salary greater than 30000.
+	SELECT *FROM Employee
+	WHERE salary > 30000;
+
+	
+	5. Less Than (<)
+	Find employees with salary less than 30000.
+	SELECT *FROM Employee
+	WHERE salary < 30000;
+	
+	6 .Greater Than or Equal To (>=)
+	Find employees with salary greater than or equal to 30000.
+	SELECT *FROM Employee
+	WHERE salary >= 30000;
+
+	7. Less Than or Equal To (<=)
+	Find employees with salary less than or equal to 30000.
+	SELECT *FROM Employee
+	WHERE salary <= 30000;
+
+
+
+What Is Logical Operators in MySQL ?
+ -Logical operators are used to combine two or more conditions in a SQL query. They always return TRUE or FALSE.
+		ex -AND ,OR ,NOT
+
+		
+AND – Returns rows only when all conditions are TRUE.
+OR – Returns rows when at least one condition is TRUE.
+NOT – Reverses the result of a condition.
+
+
+	AND
+	---
+	Condition: Find employees who are in the IT department and have a salary greater than 30000.
+	SELECT *FROM Employee
+	HERE department = 'IT' AND salary > 30000;
+
+
+	OR
+	--
+ Find employees who are in the IT department or have a salary greater than 45000.
+SELECT *FROM Employee
+WHERE department = 'IT' OR salary > 45000;
+
+
+
+	. NOT
+	------
+Condition: Find employees who are not in the IT department.
+SELECT *FROM Employee
+WHERE NOT department = 'IT';
+
+
+
+
+
+Special Operator
+----------------
+Special operators are used to perform special types of comparisons and searches in SQL.
+They are commonly used with the WHERE clause to filter data.
+
+
+		
+Operator						Purpose
+IN						Checks if a value exists in a list.
+BETWEEN						Checks whether a value is within a range.
+LIKE						Searches for a pattern in a string.
+IS NULL						Checks whether a column contains NULL.
+EXISTS						Checks whether a subquery returns any rows.
+DISTINCT 
+BETWEEN AND 

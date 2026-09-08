@@ -1,0 +1,223 @@
+						Data Type In MySQL
+						==================
+
+1-what is data type ?
+ ans - A data type is specify the type of value that can be store in column , such as number data and times  . 
+
+2 - what is category of my sql data type ? 
+ ans - 1 - numeric
+       2 - String
+       3 - Data and Time 
+
+3 -Numeric
+===========
+  -Numeric data type is used to store the number value such as integer and decimal value 
+			
+			1-int
+			2-float
+			3-double
+			4-decimal
+
+Int
+----
+Integer is numeric data type is used to store the whole number (Number without decimal points)
+	Ex -19,21,21
+	Ex-
+		Create Table Student(
+			id int,
+			age int
+		);
+
+	
+Float
+-----	
+float is numeric data type used to store decimal floating value number . it can store the value that have digit after the 
+decimal points 
+		ex - 10.3 , 33.3
+
+	Create Table Student (
+
+		price float
+	)
+
+Double
+------
+Double is a numeric data type used to store large decimal (floating points) numbers with higher precision than float . it can store more digit after the decimal point compared to float  . 
+	Ex - 122.2222
+	4949494.444
+	Create Table PRODUCT(
+		id int ;
+		product double ;
+	)
+
+
+Decimal 
+--------
+Decimal Is a numeric data type used to store exact decimal values .
+syntax
+	Decimal(m,d)
+	where m = total number of digit 
+	      d =number of digit after decimal points 
+	salary decimal(10,2)
+	store 
+	=====
+	2300.33
+
+*use decimal for salary and financial data because it store exact value without precision less . 
+
+
+String data type
+================
+	A String data type is used to store text or character data type such as name , address ,email
+		1- char
+		2-varchar
+		3-Text
+
+Char
+----
+Char is string data type used to store fixed length character data means space is fixed .
+
+	Ex- create table student(
+		name char(10)
+	)
+
+	*when u store ashish means ashish has 6 character , but my sql store from 10 character extra 4 byte memory is wasted 
+
+Varchar(variable charecter)
+---------------------------
+ variable character it is string data type used to store variable length text or character data . 
+	ex - create table abc(
+		id int,
+		name varchar(19)	
+	    );
+
+whenever we store sachin we specified 19 but sachin is  6 character extra occupy space is destroyed . memory not wasted , varchar used for city , company , name
+
+
+Text 
+----
+ text is string data type used to store large amount of text , it is used when text is too long and to fix comfortable in a varchar column
+	Ex- create table product(
+		description text
+	);
+
+we use table when we need to store large text data such as product and descriptions .
+
+
+
+
+Date And Timestamp data 
+=======================
+Date and Time stamp data type is used to represent values such as data ,time and data time , timestamp and year . 
+->when we insert invalid value , MySQL can not represent it and zero value is used . 
+
+			1-date
+			2-time
+			3-datetime
+			4-timestamp
+
+date
+----
+The date data type is used to store only the data , it does not store the time 
+	->the default format of data type is 
+		'yyyy-mm-dd'
+
+ex-
+ create table student 
+(
+	id int,
+	dob date	
+)
+values(1,'2004-07-16')
+
+*we use the date data type when we only need  to store the calendar date  ,and time is not required . 
+
+
+Time
+-----
+The TIME data type is used to store only the time. It does not store the date.
+
+The default format of the TIME data type is:
+
+HH:MM:SS 	
+
+Where:
+
+HH = Hours
+MM = Minutes
+SS = Seconds
+
+Example:
+--------
+09:30:00
+14:45:20
+23:59:59
+
+Example
+---------
+Create a table:
+
+CREATE TABLE Attendance(
+    id INT,
+    login_time TIME
+);
+
+
+INSERT INTO Attendance
+VALUES
+(1, '09:30:00');
+
+
+DateandTime
+===========
+The DATETIME data type is used to store both the date and the time in a single column.
+
+The default format is:
+YYYY-MM-DD HH:MM:SS
+
+Where:
+
+YYYY = Year
+MM = Month
+DD = Day
+HH = Hour
+MM = Minute
+SS = Second
+
+Example:
+
+2026-07-08 10:30:45
+
+CREATE TABLE Orders(
+    order_id INT,
+    order_date DATETIME
+);
+
+INSERT INTO Orders
+VALUES
+(101, '2026-07-08 10:30:45');
+
+
+
+
+Timestamp
+=========
+The TIMESTAMP data type is used to store both the date and time.
+
+The default format is:
+
+YYYY-MM-DD HH:MM:SS
+
+2026-07-08 10:30:45
+
+CREATE TABLE Employee(
+    id INT,
+    name VARCHAR(50),
+    created_at TIMESTAMP
+);
+
+INSERT INTO Employee
+VALUES
+(1, 'Ashish', '2026-07-08 10:30:45');
+
+* The main advantage of TIMESTAMP is that it can automatically store the current date and time.

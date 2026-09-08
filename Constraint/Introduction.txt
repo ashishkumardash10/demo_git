@@ -1,0 +1,185 @@
+						Constraint And Key
+						==================
+1-What is a Constraint in MySQL?
+
+A Constraint is a rule that is applied to a table column to ensure that only valid, accurate, and consistent data is stored in the database.	
+	
+		Maintain data accuracy
+	        Maintain data consistency
+ 		Prevent invalid data
+ 		Ensure data integrity
+
+2-What is a Key in MySQL?
+
+A Key is a column or a combination of columns that is used to uniquely identify a row in a table or to create a relationship between tables.
+
+
+			There are 6 main constraints in MySQL:
+
+			PRIMARY KEY
+			FOREIGN KEY
+			NOT NULL
+			UNIQUE	
+			DEFAULT
+			CHECK
+
+
+Not Null
+--------
+The NOT NULL constraint is used to ensure that a column cannot contain NULL (empty) values.
+
+NOT NULL means a value is mandatory. You cannot leave the column empty.
+
+The NOT NULL constraint is used to ensure that a column cannot contain NULL values. It makes a field mandatory, so every record must provide a value for that column. It is commonly used for important fields such as names, emails, and phone numbers.
+
+	ex- 
+		CREATE TABLE Student(
+    		id INT,
+   		 name VARCHAR(50) NOT NULL
+		);
+
+	*id can be empty (NULL).
+	 name must have a value
+
+
+Unique
+-------
+The UNIQUE constraint is used to ensure that all values in a column are unique.
+In simple words . UNIQUE means duplicate values are not allowed.
+We use the UNIQUE constraint to prevent duplicate data in a column
+-The UNIQUE constraint is used to ensure that all values in a column are unique. It prevents duplicate values from being inserted into the column. It is commonly used for fields such as email addresses, phone numbers, and Aadhaar numbers where every value must be different.
+
+
+ex -
+	CREATE TABLE Employee(``
+    	id INT,
+    	email VARCHAR(100) UNIQU 	E
+	);
+
+Every employee must have a different email address.
+Duplicate email addresses are not allowed.
+
+
+Check
+-----
+The CHECK constraint is used to restrict the values that can be stored in a column.
+in simple word CHECK ensures that the inserted value satisfies a specified condition.
+If the condition is true, the data is inserted.
+If the condition is false, MySQL rejects the data.
+-The CHECK constraint is used to ensure that the values in a column satisfy a specified condition. If the condition is true, the data is accepted; otherwise, MySQL rejects the data. It is commonly used to validate values such as age, salary, and marks.
+
+We use the CHECK constraint to ensure that only valid data is stored.
+ ex -Age must be 18 or above.
+     Salary must be greater than 0.
+
+	CREATE TABLE Student(
+    	id INT,
+    	name VARCHAR(50),
+    	age INT CHECK(age >= 18)
+	);
+
+	Here, only students who are 18 years or older can be inserted.
+
+
+
+Default
+-------
+The DEFAULT constraint is used to assign a default value to a column when no value is provided during data insertion.
+DEFAULT automatically inserts a predefined value if the user does not provide one.
+-The DEFAULT constraint is used to assign a predefined value to a column when no value is provided during data insertion. It helps reduce manual input and keeps data consistent. For example, if a salary is not specified, a default salary of 25000 can be automatically stored.
+
+ex-Avoid NULL values.
+   Provide a default value automatically.
+  Reduce manual data entry.
+
+	CREATE TABLE Employee(
+    	id INT,
+    	name VARCHAR(50),
+    	salary DECIMAL(10,2) DEFAULT 25000
+	);
+
+
+
+Primary Key
+===========
+- primary key alwas has unique data .
+- primary key can not have null data . 
+-A Primary Key is a constraint that uniquely identifies each row in a table. It ensures that every record has a unique value and does not allow duplicate or NULL values. A table can have only one Primary Key, and it is commonly used to identify records and establish relationships between tables.
+-A table can contain only one primary key constraint .
+  
+
+	ex - 
+		CREATE TABLE Student(
+    		student_id INT  NOT NULL AUTO_INCREMENT,
+   		name VARCHAR(50),
+   		age INT
+		PRIMARYKEY (student_id)
+		);
+
+
+Foreign Key
+===========
+-Foreign key  is used to link two table
+- A foreign key is one table used to point primary key in another table . It helps connect related data between tables.
+-A Foreign Key is a column in one table that refers to the Primary Key of another table.
+-A Foreign Key is a constraint that creates a relationship between two tables. It is a column in the child table that refers to the Primary Key of the parent table. It ensures that only valid values that already exist in the parent table can be stored in the child table, thereby maintaining referential integrity.
+	
+
+	Example
+	-------
+	Imagine a college database with two tables.
+
+	Department Table (Parent Table)
+
+	department_id	department_name
+		101	Computer Science
+		102	Mechanical
+		103	Civil
+
+	Here, department_id is the Primary Key.
+
+
+	Student Table (Child Table)
+	student_id	student_name	department_id
+		1	Ashish			101
+		2	Rahul			102
+		3	Priya			101
+
+	student_id → Primary Key
+	department_id → Foreign Key
+
+	The department_id in the Student table refers to the department_id in the Department
+
+
+	Example
+	=======
+	Step 1: Create the Parent Table
+	
+	CREATE TABLE Department(
+    		department_id INT PRIMARY KEY,
+    		department_name VARCHAR(50)  
+	);
+
+	
+	INSERT INTO Department
+	VALUES
+	(101, 'Computer Science'),
+	(102, 'Mechanical'),
+	(103, 'Civil');
+
+
+
+	Step 2: Create the Child Table
+	
+	CREATE TABLE Student(
+	    student_id INT PRIMARY KEY,
+    	    student_name VARCHAR(50),
+	    department_id INT,
+    	    FOREIGN KEY (department_id)
+            REFERENCES Department(department_id)
+	);
+
+
+
+	FOREIGN KEY (department_id)
+	REFERENCES Department(department_id)
